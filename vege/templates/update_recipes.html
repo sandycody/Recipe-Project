@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- When a user is authenticated and surfing on the website, Django generates a unique CSRF token for each session. This token is included in forms or requests sent by the user and is checked by the server to verify that the request is coming from the authenticated user and not from a malicious source. -->
+        <h2>Update Recipe</h2>
+        <div class="mt-3">
+            <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+            <input name="Recipe_Name" value="{{recipe.recipe_name}}" required type="text" class="form-control">
+        </div>
+        <div class="mt-3">
+            <label for="exampleInputPassword1" class="form-label reload-success">Recipe Description</label>
+            <textarea name="Recipe_Description" required class="form-control">{{recipe.recipe_description}}</textarea>
+        </div>
+        <div class="mt-3">
+            <label for="exampleInputEmail1" class="form-label">Recipe Image</label>
+            <input name="Recipe_Image" value="{{recipe.recipe_image}}" type="file" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Update Recipe</button>
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}
